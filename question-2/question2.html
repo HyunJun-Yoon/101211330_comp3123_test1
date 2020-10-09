@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const delayedSuccess = () => {
+            setTimeout(() => {
+                let success = {'message': 'delayed success!'}
+                console.log(success);
+            }, 500)
+        }
+
+        const delayedException = () => {
+            setTimeout(() => {
+                try {
+                    throw new Error('error: delayed exception');
+                } catch (e) {
+                    console.error(e);
+                }
+            }, 500)
+        }
+
+        
+        const resolvedPromise = () => { 
+            var success = {'message': 'delayed success!'}
+            new Promise(function(resolve, reject){
+                setTimeout(resolve, 500);
+            }).then(() => {
+                console.log(success)
+            })
+        }
+
+             
+        const rejectedPromise = () => { 
+            new Promise(function(resolve, reject){
+                setTimeout(reject, 500);
+            }).catch(() => {
+                try {
+                    throw new Error('error: delayed exception');
+                } catch (e) {
+                    console.error(e);
+                }
+            })
+        }
+        
+        delayedSuccess();
+        delayedException();
+        resolvedPromise();
+        rejectedPromise();
+    </script>
+    
+</body>
+</html>

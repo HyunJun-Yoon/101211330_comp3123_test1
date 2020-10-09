@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function lowerCaseWords(arr){
+            var result = new Array();
+            return new Promise(function(resolve, reject){
+                if(arr.filter(findStr) == false){
+                    return reject
+                }
+                result = arr.filter(findStr).map(v => v.toLowerCase());
+                return resolve(result);
+            })
+
+        }
+        function findStr(value){
+            return  typeof(value) == 'string';
+        }
+
+        const mixedArray = ['PIZZA', 10, true, 25, false, 'Wings']
+        console.log(lowerCaseWords(mixedArray));
+
+
+    </script>
+    
+</body>
+</html>
